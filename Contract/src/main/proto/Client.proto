@@ -1,0 +1,208 @@
+syntax = "proto3";
+package pt.ulisboa.tecnico.groovegalaxy.contract.user;
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string name = 2;
+  string familyName = 3;
+}
+
+message GetSongsRequest {}
+
+message GetSongsResponse {
+  string songs = 1;
+}
+
+message GetGenresRequest {}
+
+message GetGenresResponse {
+  string genres = 1;
+}
+
+message GetSongsByGenreRequest {
+  string genre = 1;
+}
+
+message GetSongsByGenreResponse {
+  string songs = 1;
+}
+
+message GetSongsByArtistRequest{
+    string artist = 1;
+}
+
+message GetSongsByArtistResponse{
+    string songs = 1;
+}
+
+message GetSongInformationRequest {
+  string song = 1;
+}
+
+message GetSongInformationResponse {
+  string song = 1;
+}
+
+message GetLyricsRequest {
+  string song = 1;
+}
+
+message GetLyricsResponse {
+  string lyrics = 1;
+}
+
+message GetPreviewRequest {
+  string song = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message GetPreviewResponse {
+  string preview = 1;
+}
+
+message GetMySongsRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message GetMySongsResponse {
+  string songs = 1;
+}
+
+message PlayRequest {
+  string username = 1;
+  string password = 2;
+  string song = 3;
+}
+
+message PlayResponse {
+  string song = 1;
+}
+
+message BuySongRequest {
+  string username = 1;
+  string password = 2;
+  string song = 3;
+}
+
+message BuySongResponse {
+    bool success = 1;
+}
+
+message CreateFamilyRequest {
+  string username = 1;
+  string password = 2;
+  string familyName = 3;
+  string familyCode = 4;
+}
+
+message CreateFamilyResponse {
+  bool success = 1;
+  string familyKey = 2;
+}
+
+message JoinFamilyRequest {
+  string username = 1;
+  string password = 2;
+  string familyName = 3;
+  string familyCode = 4;
+}
+
+message JoinFamilyResponse {
+  bool success = 1;
+  string familyKey = 2;
+}
+
+message LeaveFamilyRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LeaveFamilyResponse {
+  bool success = 1;
+}
+
+message DestroyFamilyRequest {
+    string username = 1;
+    string password = 2;
+    string familyCode = 3;
+}
+
+message DestroyFamilyResponse {
+  bool success = 1;
+}
+
+message ListFamilyRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message ListFamilyResponse {
+  string family = 1;
+  string familyName = 2;
+}
+
+message GetFamilySongsRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message GetFamilySongsResponse {
+    string songs = 1;
+}
+
+message PlayFamilySongRequest {
+    string username = 1;
+    string password = 2;
+    string song = 3;
+}
+
+message PlayFamilySongResponse {
+    string song = 1;
+}
+
+message PlayMiddleSongRequest {
+    string username = 1;
+    string password = 2;
+    string song = 3;
+}
+
+message PlayMiddleSongResponse {
+    string song = 1;
+}
+
+message HackmeRequest{
+
+}
+
+message HackmeResponse{
+    string content = 1;
+}
+
+service ClientService {
+  rpc login(LoginRequest) returns (LoginResponse);
+  rpc getSongs(GetSongsRequest) returns (GetSongsResponse);
+  rpc getGenres(GetGenresRequest) returns (GetGenresResponse);
+  rpc getSongsByGenre(GetSongsByGenreRequest) returns (GetSongsByGenreResponse);
+  rpc getSongsByArtist(GetSongsByArtistRequest) returns (GetSongsByArtistResponse);
+  rpc getSongInformation(GetSongInformationRequest) returns (GetSongInformationResponse);
+  rpc getLyrics(GetLyricsRequest) returns (GetLyricsResponse);
+  rpc getPreview(GetPreviewRequest) returns (GetPreviewResponse);
+  rpc GetMySongs(GetMySongsRequest) returns (GetMySongsResponse);
+  rpc play(PlayRequest) returns (PlayResponse);
+  rpc buySong(BuySongRequest) returns (BuySongResponse);
+  rpc createFamily(CreateFamilyRequest) returns (CreateFamilyResponse);
+  rpc joinFamily(JoinFamilyRequest) returns (JoinFamilyResponse);
+  rpc leaveFamily(LeaveFamilyRequest) returns (LeaveFamilyResponse);
+  rpc destroyFamily(DestroyFamilyRequest) returns (DestroyFamilyResponse);
+  rpc listFamily(ListFamilyRequest) returns (ListFamilyResponse);
+  rpc getFamilySongs(GetFamilySongsRequest) returns (GetFamilySongsResponse);
+  rpc playFamilySong(PlayFamilySongRequest) returns (PlayFamilySongResponse);
+  rpc hackme(HackmeRequest) returns (HackmeResponse);
+}
